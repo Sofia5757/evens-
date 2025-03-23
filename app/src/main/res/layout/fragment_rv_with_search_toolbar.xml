@@ -28,8 +28,6 @@
         android:layout_below="@+id/toolbar"
         android:layout_alignParentBottom="true">
 
-
-
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rv"
             android:layout_width="match_parent"

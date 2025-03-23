@@ -27,7 +27,6 @@
     <string name="info_participants">Посетители</string>
     <string name="participate">Участвовать</string>
     <string name="data_and_time">Название</string>
-    <string name="date_time">Дата и время</string>
     <string name="place">Место</string>
     <string name="mainainer">Сопровождающий</string>
 </resources>
