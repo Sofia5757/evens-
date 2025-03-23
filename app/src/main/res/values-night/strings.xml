@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="settings">настройки</string>
+    <string name="sorted_for">сортировать по...</string>
+    <string name="name_event">Название события</string>
+    <string name="date">Дата события</string>
+    <string name="location">Место проведения</string>
+</resources>

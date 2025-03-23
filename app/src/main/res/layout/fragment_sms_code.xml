@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/gray_background">
+
+    <LinearLayout
+        android:id="@+id/ll"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginHorizontal="16dp"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.42"
+        tools:layout_editor_absoluteX="16dp">
+
+        <TextView
+            android:id="@+id/tvSmsCode"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="@string/code_from_sms"
+            android:textSize="16sp"
+            android:textStyle="bold"/>
+
+        <com.fraggjkee.smsconfirmationview.SmsConfirmationView
+            android:id="@+id/smsCodeView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="24dp"
+            android:gravity="center"
+            app:scv_showCursor="false"
+            app:scv_symbolBorderColor="@color/white"
+            app:scv_symbolBorderCornerRadius="14dp"
+            app:scv_symbolBorderWidth="1dp"
+            app:scv_symbolTextSize="24dp"
+            app:scv_symbolsSpacing="12dp" />
+
+        <TextView
+            android:id="@+id/tvExplanation"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="24dp"
+            android:text="@string/sms_explanation"
+            android:textSize="14sp"
+            android:textColor="@color/gray_inactive" />
+
+    </LinearLayout>
+
+    <FrameLayout
+        android:id="@+id/flChoose"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:background="@drawable/background_rounded18_top"
+        android:elevation="1dp"
+        android:paddingHorizontal="16dp"
+        android:paddingTop="20dp"
+        android:paddingBottom="16dp"
+        app:layout_constraintBottom_toBottomOf="parent">
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btChoose"
+            style="@style/Widget.MaterialComponents.Button.UnelevatedButton"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:alpha="0.5"
+            android:clickable="false"
+            android:insetTop="0dp"
+            android:insetBottom="0dp"
+            android:text="@string/authorize"
+            android:textAllCaps="false"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            app:cornerRadius="16dp" />
+    </FrameLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

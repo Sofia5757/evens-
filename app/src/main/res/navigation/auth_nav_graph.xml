@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/auth_nav_graph"
+    app:startDestination="@id/fragmentAuth">
+
+    <fragment
+        android:id="@+id/fragmentAuth"
+        android:name="com.example.events.ui.authorization.sign_in.FragmentSignIn"
+        android:label="FragmentAuth" >
+        <action
+            android:id="@+id/action_fragmentAuth_to_fragmentRegistration"
+            app:destination="@id/fragmentRegistration" />
+    </fragment>
+    <fragment
+        android:id="@+id/fragmentRegistration"
+        android:name="com.example.events.ui.authorization.registration.FragmentRegistration"
+        android:label="FragmentRegistration"/>
+</navigation>

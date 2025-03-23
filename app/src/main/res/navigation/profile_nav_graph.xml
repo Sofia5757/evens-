@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/profile_nav_graph"
+    app:startDestination="@id/fragmentProfile">
+
+    <fragment
+        android:id="@+id/fragmentProfile"
+        android:name="com.example.events.ui.profile.FragmentProfile"
+        android:label="FragmentProfile" >
+        <action
+            android:id="@+id/action_fragmentProfile_to_fragmentSettings"
+            app:destination="@id/fragmentSettings" />
+    </fragment>
+    <fragment
+        android:id="@+id/fragmentSettings"
+        android:name="com.example.events.ui.profile_settings.FragmentSettings"
+        android:label="FragmentSettings" >
+        <argument
+            android:name="user"
+            app:argType="com.example.events.data.entities.User" />
+    </fragment>
+</navigation>

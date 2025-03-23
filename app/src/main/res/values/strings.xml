@@ -1,0 +1,33 @@
+<resources>
+    <string name="app_name">Events</string>
+    <string name="authorization">Авторизация</string>
+    <string name="authorize">Авторизоваться</string>
+    <string name="register">Зарегистрироваться</string>
+    <string name="save">Сохранить</string>
+    <string name="email">E-mail</string>
+    <string name="password">Пароль</string>
+    <string name="fio">ФИО</string>
+    <string name="my_class_hint">Класс в формате "11 в"</string>
+    <string name="pupil">Ученик</string>
+    <string name="teacher">Учитель</string>
+    <string name="pupils_and_teachers">Ученики и учителя</string>
+    <string name="main">Главная</string>
+    <string name="search_users">Поиск пользователей</string>
+    <string name="search">Поиск</string>
+    <string name="calendar">Календарь</string>
+    <string name="profile">Профиль</string>
+    <string name="events_empty">Нет текущих событий</string>
+    <string name="my_events">Мои мероприятия</string>
+    <string name="settings">Настройки</string>
+    <string name="sign_out">Выйти</string>
+    <string name="class_value">Класс: %1$s</string>
+    <string name="email_value">Email: %1$s</string>
+    <string name="list_empty">Список пуст</string>
+    <string name="users_search_hint">Введите имя или класс</string>
+    <string name="info_participants">Посетители</string>
+    <string name="participate">Участвовать</string>
+    <string name="data_and_time">Название</string>
+    <string name="date_time">Дата и время</string>
+    <string name="place">Место</string>
+    <string name="mainainer">Сопровождающий</string>
+</resources>
