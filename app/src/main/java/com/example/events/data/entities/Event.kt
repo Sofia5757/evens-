@@ -1,14 +1,12 @@
 package com.example.events.data.entities
 
-import java.util.Date
-
 data class Event(
     val name: String,
-    val participants: List<User>,
+    val participants: String,
     val accompanistName: String,
     val bonus: String,
-    val date: Date,
+    val date: String,
     val place: String,
-    val type: String,
-    val description: String
+    val type: String
+
 )
