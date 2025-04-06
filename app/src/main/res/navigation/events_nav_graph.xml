@@ -7,5 +7,28 @@
     <fragment
         android:id="@+id/fragmentMain"
         android:name="com.example.events.ui.main.FragmentMain"
-        android:label="FragmentMain" />
+        android:label="FragmentMain" >
+        <action
+            android:id="@+id/action_fragmentMain_to_fragmentParticipants"
+            app:destination="@id/fragmentParticipants" />
+        <action
+            android:id="@+id/action_fragmentMain_to_fragmentEventDetails"
+            app:destination="@id/fragmentEventDetails" />
+    </fragment>
+    <fragment
+        android:id="@+id/fragmentParticipants"
+        android:name="com.example.events.ui.event_participants.FragmentParticipants"
+        android:label="FragmentParticipants" >
+        <argument
+            android:name="users"
+            app:argType="com.example.events.data.entities.UserList" />
+    </fragment>
+    <fragment
+        android:id="@+id/fragmentEventDetails"
+        android:name="com.example.events.ui.event_details.FragmentEventDetails"
+        android:label="FragmentEventDetails" >
+        <argument
+            android:name="event"
+            app:argType="com.example.events.data.entities.Event" />
+    </fragment>
 </navigation>

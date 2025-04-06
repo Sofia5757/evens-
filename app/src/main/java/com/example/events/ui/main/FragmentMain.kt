@@ -7,7 +7,9 @@ import android.view.ViewGroup
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import com.example.events.R
+import com.example.events.data.entities.UserList
 import com.example.events.databinding.FragmentRvWithSearchToolbarBinding
 
 class FragmentMain : Fragment() {
@@ -46,9 +48,22 @@ class FragmentMain : Fragment() {
     private fun setUI() {
         binding.toolbarTitle.text = getString(R.string.main)
         binding.tvEmpty.text = getString(R.string.events_empty)
-        adapter = EventAdapter {
-
-        }
+        adapter = EventAdapter(
+            onParticipantsClick = {
+                val action = FragmentMainDirections.actionFragmentMainToFragmentParticipants(
+                    UserList(it.participants)
+                )
+                findNavController().navigate(action)
+            },
+            onParticipateClick = {
+                val action = FragmentMainDirections.actionFragmentMainToFragmentEventDetails(it)
+                findNavController().navigate(action)
+            },
+            onCancelClick = {
+                viewModel.cancelParticipation(it)
+            },
+            myProfile = viewModel.myProfile
+        )
         binding.rv.adapter = adapter
         binding.swipeRefresh.setOnRefreshListener {
             viewModel.getEvents()

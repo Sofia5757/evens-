@@ -16,7 +16,7 @@ import kotlin.coroutines.suspendCoroutine
 class FireStoreDb {
 
     private val db = Firebase.firestore
-    private val myProfile = FirebaseAuth.getInstance()
+    val myProfile = FirebaseAuth.getInstance()
 
     suspend fun getEvents(): List<Event> {
         return suspendCoroutine<List<Event>> { cont ->
@@ -96,6 +96,10 @@ class FireStoreDb {
     }
 
     fun participateInEvent(event: Event, id: String) {
+
+    }
+
+    fun cancelParticipation(event: Event) {
 
     }
 

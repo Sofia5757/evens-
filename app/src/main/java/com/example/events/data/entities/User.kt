@@ -15,3 +15,7 @@ data class User(
         ""
     )
 }
+
+data class UserList(
+    val users: List<User>
+): Serializable

@@ -2,27 +2,50 @@ package com.example.events.ui.main
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import android.widget.TextView
+import androidx.core.view.isVisible
 import androidx.recyclerview.widget.RecyclerView
+import com.example.events.R
 import com.example.events.data.entities.Event
+import com.example.events.data.entities.User
 import com.example.events.databinding.ItemEventBinding
+import com.example.events.databinding.ItemEventMainBinding
 
 class EventAdapter(
-    private val onClick: (Event) -> Unit
+    private val onParticipantsClick: (Event) -> Unit,
+    private val onParticipateClick: (Event) -> Unit,
+    private val onCancelClick: (Event) -> Unit,
+    private val myProfile: User
 ) : RecyclerView.Adapter<EventAdapter.EventViewHolder>() {
 
     val items = mutableListOf<Event>()
 
-    inner class EventViewHolder(private val binding: ItemEventBinding) : RecyclerView.ViewHolder(binding.root) {
+    inner class EventViewHolder(private val binding: ItemEventMainBinding) : RecyclerView.ViewHolder(binding.root) {
         fun bind(event: Event) {
-            binding.root.setOnClickListener {
-                onClick.invoke(event)
+            binding.apply {
+                tvName.text = event.name
+                btParticipants.isVisible = myProfile.teacher
+                btParticipants.setOnClickListener {
+                    onParticipantsClick.invoke(event)
+                }
+                if(myProfile in event.participants){
+                    btParticipate.text = binding.root.context.getString(R.string.cancel_participation)
+                    btParticipate.setOnClickListener {
+                        onCancelClick.invoke(event)
+                    }
+                }else{
+                    btParticipate.text = binding.root.context.getString(R.string.participate)
+                    btParticipate.setOnClickListener {
+                        onParticipateClick.invoke(event)
+                    }
+                }
             }
         }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): EventViewHolder {
         return EventViewHolder(
-            ItemEventBinding.inflate(
+            ItemEventMainBinding.inflate(
                 LayoutInflater.from(parent.context),
                 parent,
                 false
@@ -43,35 +66,4 @@ class EventAdapter(
         items.addAll(events)
     }
 
-}
-class EventAdapter(private val events: List<Event>) : RecyclerView.Adapter<EventAdapter.EventViewHolder>() {
-
-    inner class EventViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        private val dateTextView: TextView = itemView.findViewById(R.id.event_date)
-        private val timeTextView: TextView = itemView.findViewById(R.id.event_time)
-        private val titleTextView: TextView = itemView.findViewById(R.id.event_title)
-        private val locationTextView: TextView = itemView.findViewById(R.id.event_location)
-        private val hostTextView: TextView = itemView.findViewById(R.id.event_host)
-
-        fun bind(event: Event) {
-            dateTextView.text = event.date
-            timeTextView.text = event.time
-            titleTextView.text = event.title
-            locationTextView.text = event.location
-            hostTextView.text = event.host
-        }
-    }
-
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): EventViewHolder {
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.item_event, parent, false)
-        return EventViewHolder(view)
-    }
-
-    override fun onBindViewHolder(holder: EventViewHolder, position: Int) {
-        holder.bind(events[position])
-    }
-
-    override fun getItemCount(): Int {
-        return events.size
-    }
 }
