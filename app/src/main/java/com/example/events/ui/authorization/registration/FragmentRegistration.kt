@@ -120,6 +120,7 @@ class FragmentRegistration : Fragment() {
                     .addOnSuccessListener {
                         viewModelRegistration.createAccount(
                             User(
+                                "",
                                 name = fio,
                                 clas = clasText,
                                 teacher = binding.tgPupilOrTeacher.checkedButtonId == binding.btTeacher.id,

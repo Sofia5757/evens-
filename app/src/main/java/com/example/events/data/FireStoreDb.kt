@@ -76,7 +76,9 @@ class FireStoreDb {
             myProfile.uid?.let {
                 db.collection("users")
                     .document(it)
-                    .set(user)
+                    .set(user.apply {
+                        id = it
+                    })
                     .addOnSuccessListener {
                         cont.resume(Resource.Success(null))
                     }
