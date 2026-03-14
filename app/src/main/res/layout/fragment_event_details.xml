@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/toolbarTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end"
+            android:text="@string/event_participation"
+            android:layout_marginEnd="24dp"
+            android:background="@drawable/background_rounded18_pink_light"
+            android:padding="8dp"/>
+    </androidx.appcompat.widget.Toolbar>
+
+    <LinearLayout
+        android:id="@+id/llContent"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/toolbar"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:orientation="vertical"
+        android:layout_marginHorizontal="24dp"
+        android:background="@drawable/background_rounded18_pink_light"
+        android:paddingHorizontal="36dp"
+        android:paddingVertical="16dp">
+
+        <TextView
+            android:id="@+id/tvName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="Поход в театр"
+            android:textStyle="bold"
+            android:textSize="24sp"
+            android:layout_gravity="center"
+            android:gravity="center"/>
+
+        <TextView
+            android:id="@+id/tvDescription"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="Поход в театр"
+            android:textSize="18sp"
+            android:layout_marginTop="24dp"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:visibility="gone"/>
+
+        <TextView
+            android:id="@+id/tvPlace"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="Большой театр"
+            android:textSize="16sp"
+            android:gravity="center"
+            android:layout_marginTop="18dp"
+            android:layout_gravity="center"/>
+
+        <TextView
+            android:id="@+id/tvDate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="24 мая 18:00"
+            android:textSize="16sp"
+            android:gravity="center"
+            android:layout_marginTop="18dp"
+            android:layout_gravity="center"/>
+
+        <TextView
+            android:id="@+id/tvClass"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="Класс: 6в"
+            android:textSize="16sp"
+            android:gravity="center"
+            android:layout_marginTop="18dp"
+            android:layout_gravity="center"
+            android:visibility="gone"/>
+
+        <TextView
+            android:id="@+id/tvAccompanist"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="Сопроводитель: Мария Маратовна"
+            android:textSize="16sp"
+            android:gravity="center"
+            android:layout_marginTop="18dp"
+            android:layout_gravity="center"/>
+
+        <TextView
+            android:id="@+id/tvBonuses"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="Бонусы: 5 по литературе"
+            android:textSize="16sp"
+            android:gravity="center"
+            android:layout_marginTop="18dp"
+            android:layout_gravity="center"
+            android:visibility="gone"/>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btAction"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:backgroundTint="@color/blue_super_light"
+            android:padding="0dp"
+            android:layout_marginTop="24dp"
+            android:textColor="@color/black"
+            app:strokeWidth="1dp"
+            android:textAllCaps="true"
+            android:visibility="gone"/>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btWithParent"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:backgroundTint="@color/blue_super_light"
+            android:padding="0dp"
+            android:layout_marginTop="8dp"
+            android:textColor="@color/black"
+            android:text="@string/with_parent"
+            app:strokeWidth="1dp"
+            android:textAllCaps="true"
+            android:visibility="gone"/>
+
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

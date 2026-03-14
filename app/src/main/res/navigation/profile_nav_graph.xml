@@ -5,12 +5,27 @@
     app:startDestination="@id/fragmentProfile">
 
     <fragment
+        android:id="@+id/fragmentEventDetails"
+        android:name="com.example.events.ui.event_details.FragmentEventDetails"
+        android:label="FragmentEventDetails">
+        <argument
+            android:name="event"
+            app:argType="com.example.events.data.entities.Event" />
+    </fragment>
+    <fragment
+        android:id="@+id/fragmentAddEvent"
+        android:name="com.example.events.ui.add_event.FragmentAddEvent"
+        android:label="FragmentAddEvent" />
+    <fragment
         android:id="@+id/fragmentProfile"
         android:name="com.example.events.ui.profile.FragmentProfile"
         android:label="FragmentProfile" >
         <action
             android:id="@+id/action_fragmentProfile_to_fragmentSettings"
             app:destination="@id/fragmentSettings" />
+        <action
+            android:id="@+id/action_fragmentProfile_to_fragmentClassEvents"
+            app:destination="@id/fragmentClassEvents" />
     </fragment>
     <fragment
         android:id="@+id/fragmentSettings"
@@ -19,5 +34,16 @@
         <argument
             android:name="user"
             app:argType="com.example.events.data.entities.User" />
+    </fragment>
+    <fragment
+        android:id="@+id/fragmentClassEvents"
+        android:name="com.example.events.ui.class_events.FragmentClassEvents"
+        android:label="FragmentClassEvents" >
+        <action
+            android:id="@+id/action_fragmentClassEvents_to_fragmentEventDetails"
+            app:destination="@id/fragmentEventDetails" />
+        <action
+            android:id="@+id/action_fragmentClassEvents_to_fragmentAddEvent"
+            app:destination="@id/fragmentAddEvent" />
     </fragment>
 </navigation>

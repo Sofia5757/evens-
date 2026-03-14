@@ -10,6 +10,7 @@ import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
+import com.example.events.R
 import com.example.events.data.entities.User
 import com.example.events.databinding.FragmentSettingsBinding
 import com.example.events.ui.authorization.AuthorizationActivity
@@ -59,9 +60,6 @@ class FragmentSettings : Fragment() {
                 binding.etClass.setText(it)
             }
             binding.etFIO.setText(user.name)
-            if(user.teacher){
-                binding.tgPupilOrTeacher
-            }
         }
     }
 
@@ -83,17 +81,11 @@ class FragmentSettings : Fragment() {
                     )
                 }
             }
-            tgPupilOrTeacher.addOnButtonCheckedListener { _, _, _ ->
-                isEditEnabled(
-                    etFIO.text.toString(),
-                    etClass.text.toString()
-                )
-            }
         }
     }
 
     private fun isEditEnabled(fio: String, clasText: String) {
-        if (fio.isNotEmpty() && (binding.tgPupilOrTeacher.checkedButtonId == binding.btTeacher.id || clasText.length >= 2)) {
+        if (fio.isNotEmpty() && (viewModelSettings.user.value?.teacher == true || clasText.length >= 2)) {
             binding.btSave.isClickable = true
             binding.btSave.alpha = 1f
             binding.btSave.setOnClickListener {
@@ -101,7 +93,7 @@ class FragmentSettings : Fragment() {
                     User(
                         name = fio,
                         clas = clasText,
-                        teacher = binding.tgPupilOrTeacher.checkedButtonId == binding.btTeacher.id,
+                        teacher = viewModelSettings.user.value!!.teacher,
                         email = viewModelSettings.user.value!!.email
                     )
                 )

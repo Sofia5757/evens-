@@ -13,6 +13,7 @@ import androidx.navigation.fragment.findNavController
 import com.example.events.R
 import com.example.events.databinding.FragmentProfileBinding
 import com.example.events.ui.authorization.AuthorizationActivity
+import com.example.events.ui.my_events.FragmentMyEvents
 import com.example.events.utils.Resource
 import com.example.events.utils.showAlert
 import com.google.firebase.auth.FirebaseAuth
@@ -33,7 +34,7 @@ class FragmentProfile: Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        viewModel = ViewModelProvider(requireActivity()).get(ProfileViewModel::class.java)
+        viewModel = ViewModelProvider(this).get(ProfileViewModel::class.java)
         viewModel.getUser()
         setUI()
         setObservers()
@@ -41,7 +42,8 @@ class FragmentProfile: Fragment() {
 
     private fun setUI() {
         binding.tvMyEvents.setOnClickListener {
-
+            val action = FragmentProfileDirections.actionFragmentProfileToFragmentClassEvents()
+            findNavController().navigate(action)
         }
         binding.btSettings.setOnClickListener {
             viewModel.userInfo.value?.data?.let {user->
@@ -67,7 +69,7 @@ class FragmentProfile: Fragment() {
                         binding.tvName.text = user.name
                         binding.tvEmail.text = user.email
                         binding.tvClass.text = user.clas
-                        binding.tvMyEvents.isVisible = user.teacher
+                        binding.tvMyEvents.isVisible = user.teacher && !user.clas.isNullOrEmpty()
                         binding.ivProfile.setImageResource(
                             if (user.teacher) {
                                 R.drawable.ic_teacher

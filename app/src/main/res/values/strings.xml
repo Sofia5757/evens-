@@ -7,7 +7,7 @@
     <string name="email">E-mail</string>
     <string name="password">Пароль</string>
     <string name="fio">ФИО</string>
-    <string name="my_class_hint">Класс в формате "11 в"</string>
+    <string name="my_class_hint">Класс в формате 11в</string>
     <string name="pupil">Ученик</string>
     <string name="teacher">Учитель</string>
     <string name="pupils_and_teachers">Ученики и учителя</string>
@@ -18,17 +18,32 @@
     <string name="profile">Профиль</string>
     <string name="events_empty">Нет текущих событий</string>
     <string name="my_events">Мои мероприятия</string>
+    <string name="class_events">Мероприятия класса</string>
     <string name="settings">Настройки</string>
     <string name="sign_out">Выйти</string>
     <string name="class_value">Класс: %1$s</string>
     <string name="email_value">Email: %1$s</string>
     <string name="list_empty">Список пуст</string>
     <string name="users_search_hint">Введите имя или класс</string>
+    <string name="events_search_hint">Введите название мероприятия</string>
     <string name="info_participants">Посетители</string>
     <string name="participate">Участвовать</string>
     <string name="cancel_participation">Отменить запись</string>
-    <string name="data_and_time">Название</string>
-    <string name="place">Место</string>
-    <string name="mainainer">Сопровождающий</string>
-
+    <string name="cancel_event">Отменить мероприятие</string>
+    <string name="name">Название*</string>
+    <string name="place">Место*</string>
+    <string name="accompanist">Сопровождающий</string>
+    <string name="accompanist_value">Сопровождающий: %1$s</string>
+    <string name="add_event">Добавить мероприятие</string>
+    <string name="event_participation">Запись на мероприятие</string>
+    <string name="info_form">Информационная анкета</string>
+    <string name="description">Описание</string>
+    <string name="date_and_time">Дата и время*</string>
+    <string name="bonus">Бонус</string>
+    <string name="bonus_value">Бонус: %1$s</string>
+    <string name="post">Выложить</string>
+    <string name="choose_event_date">Выберите дату события</string>
+    <string name="choose_event_time">Выберите время события</string>
+    <string name="by_myself">Самостоятельно</string>
+    <string name="with_parent">С родителем</string>
 </resources>

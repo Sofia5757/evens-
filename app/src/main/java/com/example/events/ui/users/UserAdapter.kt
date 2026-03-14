@@ -33,6 +33,7 @@ class UserAdapter(
                         R.drawable.ic_pupil
                     }
                 )
+                tvWithParent.isVisible = user.withParent != null
             }
         }
     }

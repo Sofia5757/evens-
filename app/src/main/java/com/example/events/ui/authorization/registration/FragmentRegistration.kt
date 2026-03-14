@@ -111,7 +111,8 @@ class FragmentRegistration : Fragment() {
 
     private fun isRegisterEnabled(emailText: String, passwordText: String, fio: String, clasText: String) {
         if (android.util.Patterns.EMAIL_ADDRESS.matcher(emailText)
-                .matches() && passwordText.length >= 8 && fio.isNotEmpty() && (binding.tgPupilOrTeacher.checkedButtonId == binding.btTeacher.id || clasText.length >= 2)
+                .matches() && passwordText.length >= 8 && fio.isNotEmpty()
+            && (binding.tgPupilOrTeacher.checkedButtonId == binding.btTeacher.id || clasText.length >= 2)
         ) {
             binding.btRegister.isClickable = true
             binding.btRegister.alpha = 1f
@@ -122,7 +123,7 @@ class FragmentRegistration : Fragment() {
                             User(
                                 "",
                                 name = fio,
-                                clas = clasText,
+                                clas = clasText.lowercase(),
                                 teacher = binding.tgPupilOrTeacher.checkedButtonId == binding.btTeacher.id,
                                 email = emailText
                             )

@@ -44,23 +44,26 @@
             android:id="@+id/event_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/data_and_time"
+            android:text="@string/name"
             android:textSize="18sp"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            android:gravity="center"/>
 
         <TextView
             android:id="@+id/event_place"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/place"
-            android:textSize="14sp" />
+            android:textSize="14sp"
+            android:gravity="center"/>
 
         <TextView
             android:id="@+id/event_host"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/mainainer"
-            android:textSize="14sp" />
+            android:text="@string/accompanist"
+            android:textSize="14sp"
+            android:gravity="center"/>
     </LinearLayout>
 
 </LinearLayout>

@@ -13,9 +13,10 @@ import com.example.events.databinding.ItemEventMainBinding
 
 class EventAdapter(
     private val onParticipantsClick: (Event) -> Unit,
-    private val onParticipateClick: (Event) -> Unit,
+    private val onClick: (Event) -> Unit,
     private val onCancelClick: (Event) -> Unit,
-    private val myProfile: User
+    private val onDeleteClick: (Event) -> Unit,
+    var myProfile: User? = null
 ) : RecyclerView.Adapter<EventAdapter.EventViewHolder>() {
 
     val items = mutableListOf<Event>()
@@ -24,19 +25,29 @@ class EventAdapter(
         fun bind(event: Event) {
             binding.apply {
                 tvName.text = event.name
-                btParticipants.isVisible = myProfile.teacher
+                btParticipants.isVisible = myProfile?.teacher == true && event.participants.isNotEmpty()
                 btParticipants.setOnClickListener {
                     onParticipantsClick.invoke(event)
                 }
-                if(myProfile in event.participants){
+                root.setOnClickListener{
+                    onClick.invoke(event)
+                }
+                if(myProfile?.id in event.participants){
                     btParticipate.text = binding.root.context.getString(R.string.cancel_participation)
                     btParticipate.setOnClickListener {
                         onCancelClick.invoke(event)
                     }
                 }else{
-                    btParticipate.text = binding.root.context.getString(R.string.participate)
-                    btParticipate.setOnClickListener {
-                        onParticipateClick.invoke(event)
+                    if(myProfile?.id == event.accompanistId){
+                        btParticipate.text = binding.root.context.getString(R.string.cancel_event)
+                        btParticipate.setOnClickListener {
+                            onDeleteClick.invoke(event)
+                        }
+                    }else {
+                        btParticipate.text = binding.root.context.getString(R.string.participate)
+                        btParticipate.setOnClickListener {
+                            onClick.invoke(event)
+                        }
                     }
                 }
             }
@@ -64,6 +75,7 @@ class EventAdapter(
     fun updateItems(events: List<Event>){
         items.clear()
         items.addAll(events)
+        notifyDataSetChanged()
     }
 
 }

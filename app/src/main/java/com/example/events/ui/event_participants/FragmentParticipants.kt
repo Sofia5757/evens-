@@ -11,11 +11,10 @@ import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.example.events.R
-import com.example.events.data.entities.UserList
 import com.example.events.databinding.FragmentRvWithSearchToolbarBinding
-import com.example.events.ui.main.FragmentMain
-import com.example.events.ui.main.MainViewModel
 import com.example.events.ui.users.UserAdapter
+import com.example.events.utils.Resource
+import com.example.events.utils.showAlert
 
 class FragmentParticipants: Fragment() {
 
@@ -36,9 +35,11 @@ class FragmentParticipants: Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        viewModel = ViewModelProvider(requireActivity())[ViewModelParticipants::class.java]
-        (arguments?.getSerializable(USERS) as? UserList)?.let{
-            viewModel.initList(it.users)
+        viewModel = ViewModelProvider(this)[ViewModelParticipants::class.java]
+        arguments?.getStringArray(USERS)?.let{ids->
+            arguments?.getBooleanArray(WITH_PARENTS)?.let {withParent->
+                viewModel.initList(ids, withParent)
+            }
         }
         setObservers()
         setUI()
@@ -46,12 +47,22 @@ class FragmentParticipants: Fragment() {
 
     private fun setObservers() {
         viewModel.users.observe(viewLifecycleOwner){
-            binding.tvEmpty.isVisible = it.isEmpty()
-            adapterUser.updateItems(it)
+            when (it) {
+                is Resource.Success -> {
+                    it.data?.let { users ->
+                        binding.tvEmpty.isVisible = users.isEmpty()
+                        adapterUser.updateItems(users)
+                    }
+                }
+                is Resource.Error -> {
+                    requireContext().showAlert()
+                }
+            }
         }
     }
 
     private fun setUI() {
+        binding.swipeRefresh.isEnabled = false
         adapterUser = UserAdapter(requireContext())
         binding.tvEmpty.text = getString(R.string.list_empty)
         binding.rv.adapter = adapterUser
@@ -77,5 +88,6 @@ class FragmentParticipants: Fragment() {
 
     companion object{
         const val USERS = "users"
+        const val WITH_PARENTS = "with_parents"
     }
 }

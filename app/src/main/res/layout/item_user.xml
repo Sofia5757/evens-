@@ -48,5 +48,14 @@
             android:textSize="14sp"
             android:textColor="@color/gray3"
             tools:text="test@mail.ru"/>
+
+        <TextView
+            android:id="@+id/tvWithParent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="14sp"
+            android:textStyle="italic|bold"
+            android:text="@string/with_parent"
+            android:textColor="@color/gray3"/>
     </LinearLayout>
 </RelativeLayout>

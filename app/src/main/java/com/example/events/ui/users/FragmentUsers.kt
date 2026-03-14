@@ -34,7 +34,7 @@ class FragmentUsers : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        viewModel = ViewModelProvider(requireActivity())[ViewModelUsers::class.java]
+        viewModel = ViewModelProvider(this)[ViewModelUsers::class.java]
         setUI()
         setObservers()
         viewModel.getUsers("")

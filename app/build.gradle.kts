@@ -66,9 +66,4 @@ dependencies {
     implementation("androidx.navigation:navigation-ui:2.6.0")
 
     implementation("ru.tinkoff.decoro:decoro:1.5.0")
-
-        implementation 'androidx.recyclerview:recyclerview:1.2.1'
-        implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.4.1'
-        implementation 'androidx.lifecycle:lifecycle-livedata-ktx:2.4.1'
-    }
 }

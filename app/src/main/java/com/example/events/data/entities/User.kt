@@ -16,8 +16,18 @@ data class User(
         false,
         ""
     )
-}
+    constructor(
+        name: String,
+        clas: String,
+        teacher: Boolean,
+        email: String
+    ) : this(
+        "",
+        name,
+        clas,
+        teacher,
+        email
+    )
 
-data class UserList(
-    val users: List<User>
-): Serializable
+    var withParent: Boolean? = null
+}

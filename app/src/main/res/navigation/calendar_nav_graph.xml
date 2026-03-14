@@ -1,6 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/calendar_nav_graph">
+    android:id="@+id/calendar_nav_graph"
+    app:startDestination="@id/fragmentMyEvents">
 
+    <fragment
+        android:id="@+id/fragmentMyEvents"
+        android:name="com.example.events.ui.my_events.FragmentMyEvents"
+        android:label="FragmentMyEvents" >
+        <action
+            android:id="@+id/action_fragmentMyEvents_to_fragmentAddEvent"
+            app:destination="@id/fragmentAddEvent" />
+        <action
+            android:id="@+id/action_fragmentMyEvents_to_fragmentEventDetails"
+            app:destination="@id/fragmentEventDetails" />
+    </fragment>
+    <fragment
+        android:id="@+id/fragmentAddEvent"
+        android:name="com.example.events.ui.add_event.FragmentAddEvent"
+        android:label="FragmentAddEvent" />
+    <fragment
+        android:id="@+id/fragmentEventDetails"
+        android:name="com.example.events.ui.event_details.FragmentEventDetails"
+        android:label="FragmentEventDetails" >
+        <argument
+            android:name="event"
+            app:argType="com.example.events.data.entities.Event" />
+    </fragment>
 </navigation>
